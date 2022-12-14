@@ -1,4 +1,51 @@
-{:ns system
- :import #{aidbox}
+{:ns     system
+ :import #{aidbox
+           aidbox.config}
+
+ aidbox-db-config
+ {:zen/tags #{aidbox.config/db}
+  :pool     {:connection-timeout  2000
+             :idle-timeout        2000
+             :minimum-idle        2
+             :maximum-pool-size   20
+             :connection-init-sql "SELECT 1"}
+  :database #env PGDATABASE
+  :host     "aidbox-db"
+  :port     #env PGPORT
+  :user     #env PGUSER
+  :password #env PGPASSWORD}
+
+ aidbox-web-config
+ {:zen/tags              #{aidbox.config/web}
+  :base-url              "http://localhost"
+  :port                  #env-integer AIDBOX_PORT
+  :thread                8
+  :max-body              1000000
+  :request-save-raw-body false}
+
+ aidbox-config
+ {:zen/tags                #{aidbox.config/config}
+  :db                      aidbox-db-config
+  :web                     aidbox-web-config
+  :fhir-version            "4.0.1"
+  :compliant-mode-enabled? true
+  :aidbox-license          #env AIDBOX_LICENSE
+  :disable-legacy-seed     true}
+
+ admin-seed
+ {:zen/tags #{aidbox/service}
+  :engine   aidbox/seed-v2
+  :resources
+  {:Client {#env-keyword AIDBOX_CLIENT_ID {:secret      #env AIDBOX_CLIENT_SECRET
+                                           :first_party true
+                                           :grant_types ["client_credentials" "basic"]}}
+   :User   {#env-keyword AIDBOX_ADMIN_ID {:password #env AIDBOX_ADMIN_PASSWORD}}
+   :AccessPolicy
+   {:admin-policy {:engine "allow"
+                   :link   [{:resourceType "User" :id #env AIDBOX_ADMIN_ID}
+                            {:resourceType "Client" :id #env AIDBOX_CLIENT_ID}]}}}}
+
  box
- {:zen/tags #{aidbox/system}}}
+ {:zen/tags #{aidbox/system}
+  :config   aidbox-config
+  :services {:seed admin-seed}}}
