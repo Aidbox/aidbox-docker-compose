@@ -25,4 +25,4 @@ services:
     env_file:
       - .env
     environment:
-      PGHOST: database
+      PGHOST: aidbox-db

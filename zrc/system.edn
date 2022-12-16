@@ -10,7 +10,7 @@
              :maximum-pool-size   20
              :connection-init-sql "SELECT 1"}
   :database #env PGDATABASE
-  :host     "aidbox-db"
+  :host     #env PGHOST
   :port     #env PGPORT
   :user     #env PGUSER
   :password #env PGPASSWORD}
