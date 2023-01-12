@@ -21,7 +21,7 @@ services:
     ports:
       - "${AIDBOX_PORT}:${AIDBOX_PORT}"
     volumes:
-      - "./:${BOX_PROJECT_GIT_TARGET__PATH}"
+      - "./project/:${BOX_PROJECT_GIT_TARGET__PATH}"
     env_file:
       - .env
     environment:
