@@ -35,12 +35,6 @@ AIDBOX_LICENSE=<your-license-key>
 AIDBOX_BASE_URL=http://localhost
 AIDBOX_PORT=8888
 
-## Auth configuration
-# Used in 'system/auth-config
-# AUTH_KEYS_PRIVATE=<your-private-key>
-# AUTH_KEYS_PUBLIC=<your-public-key>
-# AUTH_KEYS_SECRET=<your-secret-key>
-
 # Super admin Client to create on start up
 # Used in 'system/admin-seed.
 # Remove from the seed if super admin is not needed.
