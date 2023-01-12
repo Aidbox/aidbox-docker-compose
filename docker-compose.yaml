@@ -4,7 +4,7 @@ services:
     image: "${PGIMAGE}"
     pull_policy: always
     ports:
-      - "${PGHOSTPORT}:${PGPORT}"
+      - "${PGHOSTPORT}:5432"
     volumes:
       - "./pgdata:/data"
     environment:
@@ -25,4 +25,5 @@ services:
     env_file:
       - .env
     environment:
+      PGPORT: 5432
       PGHOST: aidbox-db

@@ -7,8 +7,7 @@ PGIMAGE=healthsamurai/aidboxdb:14.5
 ## DB connection params
 # Used by Postgres
 # Used in 'system/db-config
-PGPORT="5432"
-PGHOSTPORT="5437"
+PGHOSTPORT=5437
 PGUSER=postgres
 PGPASSWORD=postgres
 PGDATABASE=aidbox
