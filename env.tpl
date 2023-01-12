@@ -22,6 +22,7 @@ AIDBOX_IMAGE=healthsamurai/aidboxone:edge
 
 # Aidbox configuraiton project path and entrypoint
 # Used by Aidbox on startup time
+# Used in docker-compose.yaml
 BOX_PROJECT_GIT_TARGET__PATH=project/
 AIDBOX_ZEN_ENTRYPOINT=system/box
 
