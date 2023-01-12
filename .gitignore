@@ -1,2 +1,3 @@
 .env
 /zen-packages
+/pgdata
