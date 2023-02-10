@@ -31,7 +31,7 @@ AIDBOX_LICENSE=<your-license-key>
 
 ## Web server params
 # Used in 'system/web-config
-AIDBOX_BASE_URL=http://localhost
+AIDBOX_BASE_URL=http://localhost:8888
 AIDBOX_PORT=8888
 
 # Super admin Client to create on start up
